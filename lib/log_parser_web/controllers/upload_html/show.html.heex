@@ -1,0 +1,52 @@
+<h1>Listing Logs</h1>
+<p>Total no of logs: <span><%= @total_logs %></span></p>
+
+<div>
+    <form action="/logs/method" method="post">
+        <input type="hidden" name="_csrf_token" value={Phoenix.Controller.get_csrf_token()}>
+        <label for="method">Select Method:</label>
+        <select name="method" id="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+            <!-- Add more methods as needed -->
+        </select>
+        <button type="submit">Check Logs</button>
+    </form>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Host</th>
+                <th>IP</th>
+                <th>Timestamp</th>
+                <th>Method</th>
+                <th>Path</th>
+                <th>Http_version</th>
+                <th>Response_status</th>
+                <th>Response-size</th>
+                <th>Referer</th>
+                <th>User_agent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= for log <- @logs do%>
+                <tr>
+                    <td><%= log.host%></td>
+                    <td><%= log.ip%></td>
+                    <td><%= log.timestamp%></td>
+                    <td><%= log.method%></td>
+                    <td><%= log.path%></td>
+                    <td><%= log.http_version%></td>
+                    <td><%= log.response_status%></td>
+                    <td><%= log.response_size%></td>
+                    <td><%= log.referer%></td>
+                    <td><%= log.user_agent%></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

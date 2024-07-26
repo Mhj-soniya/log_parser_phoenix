@@ -1,0 +1,25 @@
+<div class="form-container">
+  <h2>Upload your file here</h2>
+  <div class="form-group">
+    <.form :let={_f} for={} action={~p"/uploads"} method="post" enctype="multipart/form-data">
+      <div>
+        <input type="file" name="file" />
+      </div>
+      <div class="btn">
+        <input type="submit" value="Upload" />
+      </div>
+    </.form>
+  </div>
+</div>
+<div class="btn-group">
+  <.link
+  href={~p"/view"}
+  method="get"
+  class="btn"
+  >View logs</.link>
+  <.link
+  href={~p"/delete"}
+  method="delete"
+  class="btn"
+  data-confirm="Are you sure you want to delete all logs?">Delete all logs</.link>
+</div>

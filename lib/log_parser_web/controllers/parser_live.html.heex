@@ -1,0 +1,12 @@
+<h1>Log Parser</h1>
+<div>
+    <form id="upload-form" phx-submit="upload" phx-change="validate">
+        <div><.live_file_input upload={@uploads.avatar} /></div>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+<section phx-drop-target={@uploads.avatar.ref}>
+    <%= for entry <- @uploads.avatar.entries do %>
+        <%= entry.client_name %>
+    <% end %>
+</section>
